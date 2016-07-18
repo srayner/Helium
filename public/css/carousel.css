@@ -1,0 +1,10 @@
+.carousel .item {
+  height: 574px;
+}
+
+.item img {
+    position: absolute;
+    top: -100px;
+    
+    min-height: 574px;
+}
