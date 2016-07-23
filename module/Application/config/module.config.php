@@ -1,46 +1,42 @@
 <?php
-/**
- * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
- * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- */
 
 namespace Application;
-
-use Zend\Router\Http\Literal;
-use Zend\Router\Http\Segment;
-use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
     'router' => [
         'routes' => [
             'home' => [
-                'type' => Literal::class,
+                'type' => 'Literal',
                 'options' => [
                     'route'    => '/',
                     'defaults' => [
-                        'controller' => Controller\IndexController::class,
-                        'action'     => 'index',
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller'    => 'Index',
+                        'action'        => 'index',
                     ],
                 ],
             ],
             'application' => [
-                'type'    => Segment::class,
+                'type'    => 'Segment',
                 'options' => [
                     'route'    => '/application[/:action]',
                     'defaults' => [
-                        'controller'    => Controller\IndexController::class,
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller'    => 'Index',
                         'action'        => 'index',
                     ],
                 ],
             ],
         ],
     ],
+    
     'controllers' => [
-        'factories' => [
-            Controller\IndexController::class => InvokableFactory::class,
+        'invokables' => [
+            'Application\Controller\Index' => 'Application\Controller\IndexController'
         ],
     ],
+    
+    // View manager config.
     'view_manager' => [
         'display_not_found_reason' => true,
         'display_exceptions'       => true,
@@ -51,10 +47,14 @@ return [
             'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
             'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
+            'error/403'               => __DIR__ . '/../view/error/403.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
         ],
         'template_path_stack' => [
             __DIR__ . '/../view',
+        ],
+        'strategies' => [
+            'ViewJsonStrategy',
         ],
     ],
 ];
