@@ -31,6 +31,9 @@ return [
     ],
     
     'controllers' => [
+        'factories' => [
+            'Application\Controller\Gallery' => 'Application\Controller\GalleryControllerFactory',    
+        ],
         'invokables' => [
             'Application\Controller\Index' => 'Application\Controller\IndexController'
         ],
