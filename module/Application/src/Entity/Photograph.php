@@ -1,26 +1,51 @@
 <?php
 
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
 namespace Applcation\Entity;
 
+/**
+ * @ORM\Entity
+ * @ORM\Table="photograph"
+ */
 class Photograph
 {
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
+     */ 
     protected $id;
     
+    /** @ORM\Column(type="string") */
     protected $title;
     
+    /** @ORM\Column(type="text") */
     protected $caption;
     
+    /** @ORM\Column(type="string") */
     protected $filename;
     
+    /** @ORM\Column(type="string", name="original_filename") */
     protected $originalFilename;
     
+    /** @ORM\Column(type="integer") */
     protected $height;
     
+    /** @ORM\Column(type="integer") */
     protected $width;
     
+    /** @ORM\Column(type="date") */
     protected $dateTaken;
     
+    /** @ORM\Column(type="string") */
     protected $location;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Gallery", mappedBy="photographs")
+     */
+    protected $gallery;
     
     public function getId()
     {
