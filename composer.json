@@ -13,7 +13,7 @@
     "prefer-stable": true,
     "require": {
         "php": ">=5.5",
-        "zendframework/zendframework": "2.5.1",
-        "doctrine/doctrine-orm-module": "^0.9.2"
+        "zendframework/zendframework": "2.5.3",
+        "doctrine/doctrine-orm-module": "1.0.0"
     }
 }
