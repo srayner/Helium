@@ -39,6 +39,12 @@ return [
         ],
     ],
     
+    'service_manager' => [
+        'factories' => [
+            'GalleryForm' => 'Application\Form\GalleryFormFactory',
+        ],
+    ],
+    
     // View manager config.
     'view_manager' => [
         'display_not_found_reason' => true,
