@@ -12,4 +12,19 @@
  */
 
 return [
+    // Doctrine database connection.
+    'doctrine' => array(
+        'connection' => array(
+            'orm_default' => array(
+                'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
+                'params' => array(
+                    'host'     => $dbParams['localhost'],
+                    'port'     => '3306',
+                    'user'     => $dbParams['username'],
+                    'password' => $dbParams['password'],
+                    'dbname'   => $dbParams['helium'],
+                )
+            )
+        )
+    ),
 ];
