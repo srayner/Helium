@@ -10,7 +10,8 @@ class GalleryControllerFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $entityManager = $serviceLocator->get('Doctrine\ORM\EntityManager');
-        $controller = new GalleryController($entityManager);
+        $form = $serviceLocator->get('GalleryForm');
+        $controller = new GalleryController($entityManager, $form);
         return $controller;
     }   
 }

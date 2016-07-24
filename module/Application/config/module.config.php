@@ -27,6 +27,17 @@ return [
                     ],
                 ],
             ],
+            'gallery' => [
+                'type'    => 'Segment',
+                'options' => [
+                    'route'    => '/gallery[/:action]',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller'    => 'Gallery',
+                        'action'        => 'index',
+                    ],
+                ],
+            ],
         ],
     ],
     
