@@ -22,39 +22,35 @@ return [
     
     'router' => [
         'routes' => [
-            'home' => [
-                'type' => 'Literal',
-                'options' => [
+            
+            
+            'helium' => array(
+                'type'    => 'Literal',
+                'options' => array(
                     'route'    => '/',
-                    'defaults' => [
+                    'defaults' => array(
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller'    => 'Index',
                         'action'        => 'index',
-                    ],
-                ],
-            ],
-            'application' => [
-                'type'    => 'Segment',
-                'options' => [
-                    'route'    => '/application[/:action]',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller'    => 'Index',
-                        'action'        => 'index',
-                    ],
-                ],
-            ],
-            'gallery' => [
-                'type'    => 'Segment',
-                'options' => [
-                    'route'    => '/gallery[/:action]',
-                    'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller'    => 'Gallery',
-                        'action'        => 'index',
-                    ],
-                ],
-            ],
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => ':controller[/:action[/:id]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            
         ],
     ],
     
