@@ -1,9 +1,9 @@
 <?php
 
+namespace Application\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-
-namespace Application\Entity;
 
 /**
  * @ORM\Entity

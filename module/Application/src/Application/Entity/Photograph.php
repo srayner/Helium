@@ -1,9 +1,8 @@
 <?php
 
-use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
+namespace Application\Entity;
 
-namespace Applcation\Entity;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
@@ -43,7 +42,7 @@ class Photograph
     protected $location;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Gallery", mappedBy="photographs")
+     * @ORM\ManyToOne(targetEntity="Gallery", inversedBy="photographs")
      */
     protected $gallery;
     

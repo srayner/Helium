@@ -66,6 +66,10 @@ return [
     'service_manager' => [
         'factories' => [
             'GalleryForm' => 'Application\Form\GalleryFormFactory',
+            'GalleryService' => 'Application\Service\GalleryServiceFactory',
+        ],
+        'invokables' => [
+            'Gallery' => 'Application\Entity\Gallery'
         ],
     ],
     
