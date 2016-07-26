@@ -1,2 +1,18 @@
 <h1>Your Galleries</h1>
 <a class="btn btn-primary" href="<?php echo $this->url('helium/default', array('controller' => 'gallery', 'action' => 'add')); ?>">New Gallery</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Gallery</th>
+            <th>Visibility</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php foreach($this->galleries as $gallery): ?>
+    <tr>
+        <td><?php echo $gallery->getName(); ?></td>
+        <td><?php echo $gallery->getVisibility(); ?></td>
+    </tr>
+    <?php endforeach; ?>
+    <tbody>
+</table>

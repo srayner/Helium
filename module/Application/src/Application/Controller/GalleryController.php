@@ -16,7 +16,10 @@ class GalleryController extends AbstractActionController
     
     public function indexAction()
     {
-        return new ViewModel();
+        $galleries = $this->service->findAll();
+        return new ViewModel(array(
+            'galleries' => $galleries
+        ));
     }
     
     public function addAction()

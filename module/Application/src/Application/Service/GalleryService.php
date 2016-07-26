@@ -25,6 +25,11 @@ class GalleryService
         return $this->serviceLocator->get($entityName);
     }
     
+    public function findAll()
+    {
+        return $this->entityManager->getRepository('Application\Entity\Gallery')->findAll();
+    }
+    
     public function persist($entity)
     {
         $this->entityManager->persist($entity);
