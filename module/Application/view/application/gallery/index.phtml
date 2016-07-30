@@ -21,7 +21,9 @@
             <h4 class="text-primary"><?php echo $gallery->getName(); ?></h4>
             <span class="small">Updated 28th July 2016</span>
         </td>
-        <td><?php echo $gallery->getVisibility(); ?></td>
+        <td>
+            <span class="label label-default"><?php echo $gallery->getVisibility(); ?></span>
+        </td>
     </tr>
     <?php endforeach; ?>
     <tbody>
