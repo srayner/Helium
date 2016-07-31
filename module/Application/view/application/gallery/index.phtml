@@ -2,29 +2,52 @@
 <a class="btn btn-primary" href="<?php echo $this->url('helium/default', array('controller' => 'gallery', 'action' => 'add')); ?>">New Gallery</a>
 <h2>Galleries</h2>
 
-<ul class="nav nav-tabs">
-    <li role="presentation" class="active"><a href="#"><i class="fa fa-home"></i> Home</a></li>
-  <li role="presentation"><a href="#"><i class="fa fa-image"></i> Galleries</a></li>
-  <li role="presentation"><a href="#"><i class="fa fa-tag"></i> Tags</a></li>
-</ul>
+<?php $this->headScript()->appendFile('/js/application/gallery/index.js'); ?>
 
-<br><br><br>
+<div>
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="active">
+            <a href="#home" aria-controls="home" data-toggle="tab"><i class="fa fa-home"></i> Home</a>
+        </li>
+        <li role="presentation">
+            <a href="#galleries" aria-controls="galleries" data-toggle="tab"><i class="fa fa-image"></i> Galleries</a>
+        </li>
+        <li role="presentation">
+            <a href="#tags" aria-controls="tags" data-toggle="tab"><i class="fa fa-tag"></i> Tags</a>
+        </li>
+    </ul>
 
-<table class="table">
-    <thead>
+    <br><br><br>
+    
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">
+            
+        </div>
+        <div role="tabpanel" class="tab-pane" id="galleries">
+            <table class="table">
+                <thead> 
+                </thead>
+                <tbody>
+                    <?php foreach($this->galleries as $gallery): ?>
+                    <tr>
+                        <td>
+                            <h4 class="text-primary"><?php echo $gallery->getName(); ?></h4>
+                            <span class="small">Updated 28th July 2016</span>
+                        </td>
+                        <td>
+                            <span class="label label-default"><?php echo $gallery->getVisibility(); ?></span>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                <tbody>
+            </table>
+        </div>
         
-    </thead>
-    <tbody>
-    <?php foreach($this->galleries as $gallery): ?>
-    <tr>
-        <td>
-            <h4 class="text-primary"><?php echo $gallery->getName(); ?></h4>
-            <span class="small">Updated 28th July 2016</span>
-        </td>
-        <td>
-            <span class="label label-default"><?php echo $gallery->getVisibility(); ?></span>
-        </td>
-    </tr>
-    <?php endforeach; ?>
-    <tbody>
-</table>
+        <div role="tabpanel" class="tab-pane" id="tags">
+            <p>There are no tags yet.</p>
+        </div>
+        
+    </div>
+
+
