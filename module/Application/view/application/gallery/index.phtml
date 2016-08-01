@@ -32,7 +32,13 @@
                     <?php foreach($this->galleries as $gallery): ?>
                     <tr>
                         <td>
-                            <h4 class="text-primary"><?php echo $gallery->getName(); ?></h4>
+                            <a href="<?php echo $this->url('helium/default', array(
+                                'controller' => 'gallery',
+                                'action'     => 'browse',
+                                'id'         => $gallery->getId()
+                            )); ?>">
+                                <h4 class="text-primary"><?php echo $gallery->getName(); ?></h4>
+                            </a>
                             <span class="small">Updated 28th July 2016</span>
                         </td>
                         <td>
