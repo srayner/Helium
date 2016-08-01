@@ -22,6 +22,16 @@ class GalleryController extends AbstractActionController
         ));
     }
     
+    public function browseAction()
+    {
+        (int) $id = $this->params()->fromRoute('id');
+        $gallery = $this->service->find($id);
+        
+        return array(
+            'gallery' => $gallery
+        );
+    }
+    
     public function addAction()
     {
         $form = $this->service->getForm();

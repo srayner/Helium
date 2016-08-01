@@ -25,6 +25,11 @@ class GalleryService
         return $this->serviceLocator->get($entityName);
     }
     
+    public function find($id)
+    {
+        return $this->entityManager->getRepository('Application\Entity\Gallery')->find($id);
+    }
+    
     public function findAll()
     {
         return $this->entityManager->getRepository('Application\Entity\Gallery')->findAll();
