@@ -56,18 +56,20 @@ return [
     
     'controllers' => [
         'factories' => [
-            'Application\Controller\Gallery' => 'Application\Controller\GalleryControllerFactory',    
+            'Application\Controller\Gallery' => 'Application\Controller\GalleryControllerFactory',
+            'Application\Controller\Image' => 'Application\Controller\ImageControllerFactory',
         ],
         'invokables' => [
             'Application\Controller\Index' => 'Application\Controller\IndexController',
-            'Application\Controller\Image' => 'Application\Controller\ImageController',
         ],
     ],
     
     'service_manager' => [
         'factories' => [
-            'GalleryForm' => 'Application\Form\GalleryFormFactory',
+            'GalleryForm'    => 'Application\Form\GalleryFormFactory',
             'GalleryService' => 'Application\Service\GalleryServiceFactory',
+            'UploadForm'      => 'Application\Form\UploadFormFactory',
+            'ImageService'   => 'Application\Service\ImageServiceFactory',
         ],
         'invokables' => [
             'Gallery' => 'Application\Entity\Gallery'
