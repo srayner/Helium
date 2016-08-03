@@ -59,7 +59,8 @@ return [
             'Application\Controller\Gallery' => 'Application\Controller\GalleryControllerFactory',    
         ],
         'invokables' => [
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
+            'Application\Controller\Index' => 'Application\Controller\IndexController',
+            'Application\Controller\Image' => 'Application\Controller\ImageController',
         ],
     ],
     
