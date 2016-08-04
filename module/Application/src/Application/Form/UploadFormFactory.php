@@ -10,10 +10,8 @@ class UploadFormFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $entityManager = $serviceLocator->get('Doctrine\ORM\EntityManager');
-        $form = new UploadForm();
-        $form->setInputFilter(new UploadFilter());
-        $form->setHydrator(new DoctrineHydrator($entityManager));
+        $dir = $serviceLocator->get('config')['images']['location'];
+        $form = new UploadForm($dir);
         return $form;
     }   
 }
