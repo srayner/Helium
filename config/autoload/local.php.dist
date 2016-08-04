@@ -12,6 +12,11 @@
  */
 
 return [
+    
+    'images' => array(
+        'location' => '/data/uploads'    
+    ),
+    
     // Doctrine database connection.
     'doctrine' => array(
         'connection' => array(
