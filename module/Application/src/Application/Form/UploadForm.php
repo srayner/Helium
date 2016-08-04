@@ -24,7 +24,7 @@ class UploadForm extends Form
  
          
         $this->add(array(
-            'name' => 'fileupload',
+            'name' => 'file',
             'attributes' => array(
                 'type'  => 'file',
             ),
