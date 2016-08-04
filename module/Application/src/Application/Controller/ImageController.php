@@ -7,10 +7,12 @@ use Zend\Mvc\Controller\AbstractActionController;
 class ImageController extends AbstractActionController
 {
     protected $service;
+    protected $dir;
     
-    public function __construct($service)
+    public function __construct($service, $dir)
     {
         $this->service = $service;
+        $this->dir = $dir;
     }
     
     public function uploadAction()
@@ -24,7 +26,7 @@ class ImageController extends AbstractActionController
             $httpadapter = new \Zend\File\Transfer\Adapter\Http(); 
             $filesize  = new \Zend\Validator\File\Size(array('min' => 1000 )); //1KB  
             $extension = new \Zend\Validator\File\Extension(array('extension' => array('jpg')));
-          //  $httpadapter->setValidators(array($filesize), $files['file']['name']);
+            $httpadapter->setValidators(array($extension, $filesize), $files['file']['name']);
             if($httpadapter->isValid()) {
                 
                 $httpadapter->setDestination('data/private/');

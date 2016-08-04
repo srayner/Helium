@@ -9,8 +9,10 @@ class ImageControllerFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $service = $serviceLocator->getServiceLocator()->get('ImageService');
-        $controller = new ImageController($service);
+        $sl = $serviceLocator->getServiceLocator();
+        $service = $sl->get('ImageService');
+        $dir = $sl->get('config')['images']['location'];
+        $controller = new ImageController($service, $dir);
         return $controller;
     }   
 }
