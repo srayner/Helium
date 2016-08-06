@@ -29,13 +29,25 @@ class ImageController extends AbstractActionController
             if ($form->isValid()) {
                 $data = $form->getData();
                 $this->setFileNames($data);
-                return $this->redirect()->toRoute('application/default');
+                return $this->redirect()->toRoute('helium/default', array(
+                    'controller' => 'image',
+                    'action' => 'upload'
+                ));
             }
         } 
 
         return array(
             'form' => $form
         );
+    }
+    
+    private function setFileNames($data)
+    {
+        unset($data['submit']);
+        foreach($data['image-file'] as $key => $file)
+        {
+            rename($file['tmp_name'], $this->dir . DIRECTORY_SEPARATOR . $file['name']);
+        }
     }
 }
 
