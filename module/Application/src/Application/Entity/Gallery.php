@@ -37,6 +37,7 @@ class Gallery
     public function addPhotograph($photograph)
     {
         $this->photographs[] = $photograph;
+        $photograph->setGallery($this);
         return $this;
     }
     

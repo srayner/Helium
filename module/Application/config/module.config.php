@@ -57,7 +57,7 @@ return [
     'controllers' => [
         'factories' => [
             'Application\Controller\Gallery' => 'Application\Controller\GalleryControllerFactory',
-            'Application\Controller\Image' => 'Application\Controller\ImageControllerFactory',
+            'Application\Controller\Image'   => 'Application\Controller\ImageControllerFactory',
         ],
         'invokables' => [
             'Application\Controller\Index' => 'Application\Controller\IndexController',
@@ -72,7 +72,8 @@ return [
             'ImageService'   => 'Application\Service\ImageServiceFactory',
         ],
         'invokables' => [
-            'Gallery' => 'Application\Entity\Gallery'
+            'Gallery'    => 'Application\Entity\Gallery',
+            'Photograph' => 'Application\Entity\Photograph'
         ],
     ],
     

@@ -7,12 +7,10 @@ use Zend\Mvc\Controller\AbstractActionController;
 class ImageController extends AbstractActionController
 {
     protected $service;
-    protected $dir;
     
-    public function __construct($service, $dir)
+    public function __construct($service)
     {
         $this->service = $service;
-        $this->dir = $dir;
     }
     
     public function uploadAction()
@@ -28,7 +26,7 @@ class ImageController extends AbstractActionController
             $form->setData($post);
             if ($form->isValid()) {
                 $data = $form->getData();
-                $this->setFileNames($data);
+                $this->service->persist($data, 1);
                 return $this->redirect()->toRoute('helium/default', array(
                     'controller' => 'image',
                     'action' => 'upload'
@@ -39,15 +37,6 @@ class ImageController extends AbstractActionController
         return array(
             'form' => $form
         );
-    }
-    
-    private function setFileNames($data)
-    {
-        unset($data['submit']);
-        foreach($data['image-file'] as $key => $file)
-        {
-            rename($file['tmp_name'], $this->dir . DIRECTORY_SEPARATOR . $file['name']);
-        }
     }
 }
 

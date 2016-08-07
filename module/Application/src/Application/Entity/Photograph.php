@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table="photograph"
+ * @ORM\Table="image"
  */
 class Photograph
 {
@@ -35,12 +35,17 @@ class Photograph
     /** @ORM\Column(type="integer") */
     protected $width;
     
-    /** @ORM\Column(type="date") */
+    /** @ORM\Column(type="date", name="date_taken") */
     protected $dateTaken;
     
     /** @ORM\Column(type="string") */
     protected $location;
     
+    /** @ORM\Column(type="string") */
+    protected $type;
+    
+    /** @ORM\Column(type="integer") */
+    protected $size;
     /**
      * @ORM\ManyToOne(targetEntity="Gallery", inversedBy="photographs")
      */
@@ -91,6 +96,16 @@ class Photograph
         return $this->location;
     }
 
+    public function getSize()
+    {
+        return $this->size;
+    }
+    
+    public function getType()
+    {
+        return $this->type;
+    }
+    
     public function setId($id)
     {
         $this->id = $id;
@@ -142,6 +157,24 @@ class Photograph
     public function setLocation($location)
     {
         $this->location = $location;
+        return $this;
+    }
+    
+    function setType($type)
+    {
+        $this->type = $type;
+        return $this;
+    }
+
+    function setSize($size)
+    {
+        $this->size = $size;
+        return $this;
+    }
+    
+    function setGallery($gallery)
+    {
+        $this->gallery = $gallery;
         return $this;
     }
 }
