@@ -26,6 +26,10 @@ class ImageController extends AbstractActionController
             $form->setData($post);
             if ($form->isValid()) {
                 $data = $form->getData();
+                echo '<pre>';
+                print_r($data);
+                echo '</pre>';
+                die;
                 $this->service->persist($data, 1);
                 return $this->redirect()->toRoute('helium/default', array(
                     'controller' => 'image',
@@ -37,6 +41,14 @@ class ImageController extends AbstractActionController
         return array(
             'form' => $form
         );
+    }
+    
+    public function serveAction()
+    {
+        $id = (int)$this->params()->fromRoute('id');
+        $photo = $this->service->find($id);
+        header("Content-type: image/jpeg");
+        include_once($photo->getFilename());
     }
 }
 

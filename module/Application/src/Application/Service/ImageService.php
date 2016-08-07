@@ -20,6 +20,11 @@ class ImageService
         return $this->form;
     }
     
+    public function find($id)
+    {
+        return $this->entityManager->getRepository('Application\Entity\Photograph')->find($id);
+    }
+    
     public function persist($data, $galleryId)
     {
         foreach($data['image-file'] as $key => $file)

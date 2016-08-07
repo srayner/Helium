@@ -1,9 +1,7 @@
 <h1><?php echo $this->gallery->getName(); ?></h1>
 
-<ul>
 <?php foreach ($this->gallery->getPhotographs() as $photo): ?>
-<li><?php echo $photo->getFilename();?></li>
+<img width="64" src="/image/serve/<?php echo $photo->getId();?>">
 <?php endforeach; ?>
-</ul>
 
 
