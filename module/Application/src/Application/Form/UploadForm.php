@@ -44,7 +44,7 @@ class UploadForm extends Form
         $fileInput = new InputFilter\FileInput('image-file');
         $fileInput->setRequired(true);
         $fileInput->getValidatorChain()
-                  ->attachByName('filesize',         array('max' => 1024000))
+                  ->attachByName('filesize',         array('max' => 4 * 1024 * 1024))
                   ->attachByName('filemimetype',     array('mimeType' => 'image/jpeg'));
         
         $fileInput->getFilterChain()->attachByName('filerenameupload', array(

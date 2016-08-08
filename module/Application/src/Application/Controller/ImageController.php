@@ -26,10 +26,10 @@ class ImageController extends AbstractActionController
             $form->setData($post);
             if ($form->isValid()) {
                 $data = $form->getData();
-                echo '<pre>';
-                print_r($data);
-                echo '</pre>';
-                die;
+                //echo '<pre>';
+                //print_r($data);
+                //echo '</pre>';
+                //die;
                 $this->service->persist($data, 1);
                 return $this->redirect()->toRoute('helium/default', array(
                     'controller' => 'image',

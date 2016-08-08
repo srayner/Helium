@@ -30,11 +30,14 @@ class ImageService
         foreach($data['image-file'] as $key => $file)
         {
             $gallery = $this->entityManager->getReference('Application\Entity\Gallery', $galleryId);
+            $imagesize = getimagesize($file['tmp_name']);
             $photograph = $this->serviceLocator->get('Photograph');
             $photograph->setFilename($file['tmp_name'])
                        ->setOriginalFilename($file['name'])
                        ->setType($file['type'])
-                       ->setSize($file['size']);
+                       ->setSize($file['size'])
+                       ->setWidth($imagesize[0])
+                       ->setHeight($imagesize[1]);
             $gallery->addPhotograph($photograph);
             $this->entityManager->persist($photograph);
         }
