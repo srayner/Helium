@@ -27,15 +27,12 @@ class ImageService
     
     public function persist($data, $galleryId)
     {
+        
         foreach($data['image-file'] as $key => $file)
         {
             $gallery = $this->entityManager->getReference('Application\Entity\Gallery', $galleryId);
             $imagesize = getimagesize($file['tmp_name']);
             $exif = exif_read_data($file['tmp_name'], 'EXIF');
-            //echo '<pre>';
-            //print_r($exif);
-            //echo '</pre>';
-            //die;
             
             $photograph = $this->serviceLocator->get('Photograph');
             $photograph->setFilename($file['tmp_name'])
