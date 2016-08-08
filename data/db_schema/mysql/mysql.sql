@@ -20,6 +20,8 @@ CREATE TABLE photograph (
   `location`          VarChar(256),
   `type`              VarChar(32),
   `size`              Integer(11),
+  `make`              VarChar(128) NULL,
+  `model`             VarChar(128) NULL,
   FOREIGN KEY (gallery_id) REFERENCES gallery(id) ON DELETE CASCADE,
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;

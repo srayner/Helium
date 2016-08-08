@@ -31,6 +31,12 @@ class ImageService
         {
             $gallery = $this->entityManager->getReference('Application\Entity\Gallery', $galleryId);
             $imagesize = getimagesize($file['tmp_name']);
+            $exif = exif_read_data($file['tmp_name'], 'EXIF');
+            //echo '<pre>';
+            //print_r($exif);
+            //echo '</pre>';
+            //die;
+            
             $photograph = $this->serviceLocator->get('Photograph');
             $photograph->setFilename($file['tmp_name'])
                        ->setOriginalFilename($file['name'])
@@ -38,6 +44,13 @@ class ImageService
                        ->setSize($file['size'])
                        ->setWidth($imagesize[0])
                        ->setHeight($imagesize[1]);
+            if (array_key_exists('Make', $exif)) {
+                $photograph->setMake($exif['Make']);
+            }
+            if (array_key_exists('Model', $exif)) {
+                $photograph->setModel($exif['Model']);
+            }
+            
             $gallery->addPhotograph($photograph);
             $this->entityManager->persist($photograph);
         }

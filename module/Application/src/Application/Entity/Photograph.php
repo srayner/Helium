@@ -46,6 +46,13 @@ class Photograph
     
     /** @ORM\Column(type="integer") */
     protected $size;
+    
+    /** @ORM\Column(type="string") */
+    protected $make;
+    
+    /** @ORM\Column(type="string") */
+    protected $model;
+    
     /**
      * @ORM\ManyToOne(targetEntity="Gallery", inversedBy="photographs")
      */
@@ -106,6 +113,16 @@ class Photograph
         return $this->type;
     }
     
+    function getMake()
+    {
+        return $this->make;
+    }
+
+    function getModel()
+    {
+        return $this->model;
+    }
+
     public function setId($id)
     {
         $this->id = $id;
@@ -177,4 +194,18 @@ class Photograph
         $this->gallery = $gallery;
         return $this;
     }
+    
+    public function setMake($make)
+    {
+        $this->make = $make;
+        return $this;
+    }
+
+    public function setModel($model)
+    {
+        $this->model = $model;
+        return $this;
+    }
+
+
 }
