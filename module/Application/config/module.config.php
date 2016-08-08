@@ -75,6 +75,9 @@ return [
             'Gallery'    => 'Application\Entity\Gallery',
             'Photograph' => 'Application\Entity\Photograph'
         ],
+        'shared' => [
+            'Photograph' => false,    
+        ],
     ],
     
     // View manager config.
