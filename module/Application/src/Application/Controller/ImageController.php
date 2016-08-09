@@ -15,6 +15,8 @@ class ImageController extends AbstractActionController
     
     public function uploadAction()
     {
+        $galleryId = (int)$this->params()->fromRoute('id');
+        
         $form = $this->service->getForm();
         
         $request = $this->getRequest();
@@ -30,7 +32,7 @@ class ImageController extends AbstractActionController
                 //print_r($data);
                 //echo '</pre>';
                 //die;
-                $this->service->persist($data, 1);
+                $this->service->persist($data, $galleryId);
                 return $this->redirect()->toRoute('helium/default', array(
                     'controller' => 'image',
                     'action' => 'upload'
@@ -39,7 +41,8 @@ class ImageController extends AbstractActionController
         } 
 
         return array(
-            'form' => $form
+            'form' => $form,
+            'galleryId' => $galleryId
         );
     }
     

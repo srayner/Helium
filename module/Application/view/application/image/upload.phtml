@@ -2,5 +2,10 @@
 
 <?php
     $form = $this->form;
+    $form->setAttribute('action', $this->url('helium/default', array(
+        'controller' => 'image',
+        'action' => 'upload',
+        'id' => $this->galleryId
+    )));
     echo $this->form($form);
 ?>
