@@ -1,4 +1,10 @@
 <h1><?php echo $this->gallery->getName(); ?></h1>
+<hr>
+<a class="btn btn-primary" href="<?php echo $this->url('helium/default', array(
+    'controller' => 'image',
+    'action' => 'upload',
+    'id' => $this->gallery->getId()
+))?>"><i class="fa fa-upload"></i> Upload Image</a>
 
 <?php foreach ($this->gallery->getPhotographs() as $photo): ?>
 <img width="64" src="/image/serve/<?php echo $photo->getId();?>">
